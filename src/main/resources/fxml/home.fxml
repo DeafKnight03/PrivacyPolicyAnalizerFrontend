@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.myapp.client.controller.HomeController"
+            prefWidth="1000" prefHeight="640"
+
+            styleClass="background">
+
+    <!-- NAVBAR -->
+    <top>
+        <HBox styleClass="navbar" spacing="12" alignment="CENTER_LEFT" BorderPane.alignment="CENTER">
+            <children>
+                <Label text="Policy Analyzer" styleClass="brand"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="Home" styleClass="nav-btn"/>
+                <Button text="Policies" styleClass="nav-btn" fx:id="policiesBtn"/>
+                <Button text="Impostazioni" styleClass="nav-btn" fx:id="settingsBtn"/>
+                <Button text="Accedi" styleClass="nav-cta" fx:id="loginBtn"/>
+            </children>
+        </HBox>
+    </top>
+
+    <!-- CONTENUTO CENTRALE -->
+    <center>
+        <StackPane>
+            <children>
+                <VBox alignment="CENTER" spacing="24" styleClass="container">
+                    <children>
+                        <!-- Hero Card -->
+                        <VBox styleClass="card hero-card" spacing="16" maxWidth="680">
+                            <children>
+                                <VBox alignment="CENTER">
+                                <Label text="Benvenuto in Policy Analyzer" styleClass="hero-title"/>
+                                <Label text="Analizza, archivia e consulta le tue privacy policy con un'interfaccia moderna e semplice."
+                                       wrapText="true" styleClass="hero-subtitle"/>
+                                </VBox>
+                                <HBox spacing="12" alignment="CENTER">
+                                    <children>
+                                        <Button text="Inizia subito" styleClass="cta-primary" fx:id="getStartedBtn"/>
+                                        <Button text="Guarda le policy" styleClass="cta-primary" fx:id="viewPoliciesBtn"/>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+
+                        <!-- Piccola sezione di feature -->
+                        <HBox spacing="16" alignment="CENTER" styleClass="tiles">
+                            <children>
+                                <VBox styleClass="feature-tile" spacing="8" alignment="CENTER">
+                                    <children>
+                                        <Label text="Analisi" styleClass="feature-title"/>
+                                        <Label text="Estrai insight dalle policy con un click." wrapText="true" styleClass="feature-desc"/>
+                                    </children>
+                                </VBox>
+                                <VBox styleClass="feature-tile" spacing="8" alignment="CENTER">
+                                    <children>
+                                        <Label text="Storico" styleClass="feature-title"/>
+                                        <Label text="Tieni traccia delle versioni e confronti." wrapText="true" styleClass="feature-desc"/>
+                                    </children>
+                                </VBox>
+                                <VBox styleClass="feature-tile" spacing="8" alignment="CENTER">
+                                    <children>
+                                        <Label text="Sicurezza" styleClass="feature-title"/>
+                                        <Label text="Accesso protetto con ruoli e JWT." wrapText="true" styleClass="feature-desc"/>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </children>
+        </StackPane>
+    </center>
+
+    <!-- FOOTER MINIMO -->
+    <bottom>
+        <HBox alignment="CENTER" styleClass="footer" BorderPane.alignment="CENTER">
+            <children>
+                <Label text="© 2025 Policy Analyzer"/>
+            </children>
+        </HBox>
+    </bottom>
+</BorderPane>

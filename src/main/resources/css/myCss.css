@@ -1,0 +1,13 @@
+
+
+.text-field {
+    -fx-background-radius: 6;
+}
+
+.password-field {
+    -fx-background-radius: 6;
+}
+
+.button {
+    -fx-background-radius: 6;
+}

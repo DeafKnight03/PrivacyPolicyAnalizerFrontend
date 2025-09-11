@@ -1,0 +1,112 @@
+/* =========================
+   Base helpers - DARK
+   ========================= */
+.root, .background {
+    -fx-background-color: #202124;
+    -fx-text-fill: #eaeaea;
+}
+
+.card, .hero-card, .feature-tile {
+    -fx-background-color: #2a2b2e;
+    -fx-border-color: #3c3d40;
+}
+
+/* Limit content width and center */
+.container {
+    -fx-max-width: 960;
+    -fx-padding: 24 24 32 24;
+}
+
+/* =========================
+   NAVBAR - DARK
+   ========================= */
+.navbar {
+    -fx-background-color: #2a2b2e;
+    -fx-border-color: #3c3d40;
+    -fx-border-width: 0 0 1 0;
+    -fx-background-radius: 0 0 10 10;
+    -fx-padding: 12 18;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 16, 0.2, 0, 2);
+}
+
+/* Brand */
+.brand { -fx-font-size: 16px; -fx-font-weight: 800; }
+
+/* Navbar buttons (neutral) */
+.nav-btn {
+    -fx-background-radius: 8;
+    -fx-padding: 6 10;
+    -fx-font-weight: 600;
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+    -fx-text-fill: #f1f1f1;
+}
+.nav-btn:hover { -fx-background-color: rgba(255, 255, 255, 0.08); }
+.nav-btn:focused { -fx-effect: none; } /* niente glow blu */
+
+/* CTA in navbar */
+.nav-cta {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-weight: 700;
+    -fx-background-radius: 10;
+    -fx-padding: 6 12;
+    -fx-border-color: transparent;
+}
+.nav-cta:hover { -fx-background-color: rgba(255, 255, 255, 0.08);}
+.nav-cta:focused { -fx-effect: none; }
+
+/* =========================
+   HERO
+   ========================= */
+.hero-card {
+    -fx-background-radius: 16;
+    -fx-padding: 32 36;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 22, 0.25, 0, 8);
+}
+.hero-title   { -fx-font-size: 32px; -fx-font-weight: 900;}
+.hero-subtitle{ -fx-font-size: 15px;}
+
+/* =========================
+   CTAs
+   ========================= */
+.cta-primary {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-weight: 700;
+    -fx-background-radius: 12;
+    -fx-padding: 10 18;
+    -fx-border-color: transparent;
+}
+.cta-primary:hover  { -fx-background-color: rgba(255, 255, 255, 0.08); }
+.cta-primary:focused{ -fx-effect: none; }
+
+.cta-secondary {
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-accent;
+    -fx-border-color: rgba(255, 255, 255, 0.08);
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-padding: 10 18;
+}
+.cta-secondary:hover  { -fx-background-color: rgba(255,255,255,0.08); }
+.cta-secondary:focused{ -fx-effect: none; }
+
+/* =========================
+   Feature tiles
+   ========================= */
+.tiles { -fx-padding: 6 0 0 0; }
+.feature-tile {
+    -fx-background-radius: 12;
+    -fx-padding: 18;
+    -fx-min-width: 240;
+    -fx-min-height: 120;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.10), 14, 0.25, 0, 6);
+}
+.feature-title { -fx-font-size: 14px; -fx-font-weight: 800; }
+.feature-desc  { -fx-font-size: 12px; }
+
+/* =========================
+   Footer
+   ========================= */
+.footer { -fx-padding: 12; -fx-opacity: 0.85; }
