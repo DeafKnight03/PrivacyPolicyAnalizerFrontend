@@ -110,3 +110,23 @@
    Footer
    ========================= */
 .footer { -fx-padding: 12; -fx-opacity: 0.85; }
+/* =========================
+   Clickable Page Title
+   ========================= */
+.page-title-link {
+    -fx-font-size: 20px;         /* slightly smaller than hero-title for balance */
+    -fx-font-weight: 800;
+    -fx-text-fill: white;         /* white text */
+    -fx-padding: 0 0 0 12;        /* left padding */
+    -fx-alignment: center-left;   /* align text to left */
+    -fx-text-alignment: left;     /* align text to left */
+    -fx-text-overflow: ellipsis;  /* ellipsis if too long */
+    -fx-wrap-text: true;          /* wrap text */
+    -fx-opacity: 0.85;            /* slightly transparent */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 12, 0.25, 0, 4);
+    -fx-cursor: hand;            /* hand cursor on hover */
+}
+
+.page-title-link:hover {
+    -fx-text-fill: grey; /* darker/lighter on hover */
+}

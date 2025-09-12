@@ -10,8 +10,8 @@ import jfxtras.styles.jmetro.Style;
 
 public class App extends Application {
 
-    private JMetro jMetro;
-    private Scene scene;
+    private static JMetro jMetro;
+    private static Scene scene;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -37,9 +37,14 @@ public class App extends Application {
         // new javafx.animation.PauseTransition(javafx.util.Duration.seconds(2))
         //     .setOnFinished(e -> switchTheme());
         // PT.play();
+
     }
 
-    private void applyThemeStylesheets(Style style) {
+    public static JMetro getJMetro() {
+        return jMetro;
+    }
+
+    public void applyThemeStylesheets(Style style) {
         // Rimuovi eventuali CSS precedenti del tema
         scene.getStylesheets().removeIf(s ->
                 s.endsWith("/css/homeLight.css") || s.endsWith("/css/homeDark.css"));
@@ -49,6 +54,9 @@ public class App extends Application {
         scene.getStylesheets().add(getClass().getResource(css).toExternalForm());
     }
 
+    public static Scene getMainScene() {
+        return scene;
+    }
     // Call this from a toggle button / menu item / settings
     public void switchTheme() {
         Style newStyle = (jMetro.getStyle() == Style.DARK) ? Style.LIGHT : Style.DARK;
