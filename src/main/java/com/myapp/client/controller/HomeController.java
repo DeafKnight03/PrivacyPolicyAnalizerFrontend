@@ -1,5 +1,8 @@
 package com.myapp.client.controller;
 
+import com.myapp.client.util.RefreshStore;
+import com.myapp.client.util.Router;
+import com.myapp.client.util.Session;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -14,10 +17,13 @@ import com.myapp.client.App;
 public class HomeController {
 
 
-    /*@FXML private void handleLogout() {
+    @FXML private void handleLogout() {
         System.out.println("Logout clicked");
+        Session.clear();
+        RefreshStore.clear();
+        Router.go("login");
 
-    }*/
+    }
     @FXML
     private void handleTitleClick(MouseEvent e) {
         System.out.println("Page title clicked!");

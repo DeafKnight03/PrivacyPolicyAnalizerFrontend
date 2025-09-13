@@ -1,4 +1,5 @@
 package com.myapp.client;
+import com.myapp.client.util.Router;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,22 +16,22 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/home.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
 
         // Base background per JMetro (fondamentale)
         root.getStyleClass().add(JMetroStyleClass.BACKGROUND);
 
-        scene = new Scene(root);
+        Router.init(scene = new Scene(root));
         var theme = Style.LIGHT;
         // 1) Applica JMetro prima dei tuoi CSS
         jMetro = new JMetro(theme);
         jMetro.setScene(scene);
 
         // 2) Carica il CSS dedicato al tema corrente
-        applyThemeStylesheets(theme);
+        //applyThemeStylesheets(theme);
 
         stage.setScene(scene);
-        stage.setTitle("Theme toggle demo");
+        stage.setTitle("App");
         stage.show();
 
         // Esempio: toggla tema dopo 2 secondi
