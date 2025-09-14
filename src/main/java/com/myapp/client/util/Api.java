@@ -3,12 +3,14 @@ package com.myapp.client.util;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.myapp.client.dto.LoginRequest;
 import com.myapp.client.dto.SignupRequest;
+import com.myapp.client.dto.StringDto;
 
 import java.net.http.*;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.util.Base64;
+import java.util.concurrent.CompletableFuture;
 
 import static com.myapp.client.util.Json.MAPPER;
 
@@ -46,6 +48,21 @@ public class Api {
                 .POST(HttpRequest.BodyPublishers.ofString(s, StandardCharsets.UTF_8))
                 .build();
         return client.send(r, HttpResponse.BodyHandlers.ofString());
+    }
+
+    public CompletableFuture<HttpResponse<String>> analyze1Async(StringDto request) {
+        try {
+            String s = MAPPER.writeValueAsString(request);
+            HttpRequest r = req("/api/policies/analyze1")
+                    .header("Content-Type", "application/json")
+                    .header("Accept", "application/json")
+                    .POST(HttpRequest.BodyPublishers.ofString(s, StandardCharsets.UTF_8))
+                    .build();
+
+            return client.sendAsync(r, HttpResponse.BodyHandlers.ofString());
+        } catch (Exception e) {
+            return CompletableFuture.failedFuture(e);
+        }
     }
 
     private boolean refreshIfPossible() {

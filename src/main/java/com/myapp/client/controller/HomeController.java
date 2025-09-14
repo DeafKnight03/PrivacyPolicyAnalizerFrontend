@@ -24,6 +24,13 @@ public class HomeController {
         Router.go("login");
 
     }
+
+    @FXML private void handleAnalysis() {
+        System.out.println("Analizza clicked");
+
+        Router.go("analysis");
+
+    }
     @FXML
     private void handleTitleClick(MouseEvent e) {
         System.out.println("Page title clicked!");

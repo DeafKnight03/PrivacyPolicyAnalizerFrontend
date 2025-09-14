@@ -37,7 +37,7 @@ public class ControllerLogin {
         try{
             HttpResponse<String> response = api.login(new LoginRequest(usernameField.getText(),passwordField.getText()));
             ObjectMapper mapper = new ObjectMapper();
-            Map<String, Object> json = mapper.readValue(response.body(), new TypeReference<>(){});
+
             if(response.statusCode() == 200){
                 errorLabel.setText("Login effettuato con successo!");
                 AuthResponse authResponse = mapper.readValue(response.body(), new TypeReference<>(){});
@@ -46,6 +46,7 @@ public class ControllerLogin {
                 clearFields();
                 Router.go("home");
             }else {
+                Map<String, Object> json = mapper.readValue(response.body(), new TypeReference<>(){});
                 errorLabel.setText("Login fallito! " + json.get("message"));
             }
 

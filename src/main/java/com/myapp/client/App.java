@@ -22,13 +22,16 @@ public class App extends Application {
         root.getStyleClass().add(JMetroStyleClass.BACKGROUND);
 
         Router.init(scene = new Scene(root));
-        var theme = Style.LIGHT;
+        var theme = Style.DARK;
         // 1) Applica JMetro prima dei tuoi CSS
         jMetro = new JMetro(theme);
         jMetro.setScene(scene);
 
         // 2) Carica il CSS dedicato al tema corrente
         //applyThemeStylesheets(theme);
+        if(theme == Style.DARK){
+            scene.getStylesheets().add(getClass().getResource("/css/loginDark.css").toExternalForm());
+        }
 
         stage.setScene(scene);
         stage.setTitle("App");

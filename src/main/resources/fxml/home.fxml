@@ -16,7 +16,7 @@
                 <Label text="Policy Analyzer" styleClass="page-title-link" onMouseClicked="#handleTitleClick"/>
                 <Region HBox.hgrow="ALWAYS"/>
                 <Button text="Home" styleClass="nav-btn"/>
-                <Button text="Analizza" styleClass="nav-btn"/>
+                <Button text="Analizza" styleClass="nav-btn" onAction="#handleAnalysis"/>
                 <Button text="Policies" styleClass="nav-btn" fx:id="policiesBtn"/>
                 <Button text="Impostazioni" styleClass="nav-btn" fx:id="settingsBtn"/>
                 <Button text="LOGOUT" styleClass="nav-cta" fx:id="logoutBtn" onAction="#handleLogout"/>

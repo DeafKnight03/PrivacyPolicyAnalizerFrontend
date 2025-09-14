@@ -1,0 +1,9 @@
+.root, .background {
+    -fx-background-color: #202124;
+    -fx-text-fill: #eaeaea;
+}
+
+.card, .hero-card, .feature-tile {
+    -fx-background-color: #2a2b2e;
+    -fx-border-color: #3c3d40;
+}
