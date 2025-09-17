@@ -2,12 +2,12 @@
    Base helpers - LIGHT
    ========================= */
 .root, .background {
-    -fx-background-color: white;
+    -fx-background-color: #e2e2d0;
     -fx-text-fill: black;
 }
 
 .card, .hero-card, .feature-tile {
-    -fx-background-color: #fdfdfd;
+    -fx-background-color: #eeeee4;
     -fx-border-color: #e0e0e0;
 }
 
@@ -21,7 +21,7 @@
    NAVBAR - LIGHT
    ========================= */
 .navbar {
-    -fx-background-color: #fafafa;
+    -fx-background-color: #eeeee4;
     -fx-border-color: #d0d0d0;
     -fx-border-width: 0 0 1 0;
     -fx-background-radius: 0 0 10 10;
@@ -56,9 +56,6 @@
 .nav-cta:hover { -fx-background-color: rgba(0, 0, 0, 0.05); }
 .nav-cta:focused { -fx-effect: none; }
 
-/* =========================
-   HERO
-   ========================= */
 .hero-card {
     -fx-background-radius: 16;
     -fx-padding: 32 36;
@@ -67,9 +64,6 @@
 .hero-title   { -fx-font-size: 32px; -fx-font-weight: 900; }
 .hero-subtitle{ -fx-font-size: 15px; }
 
-/* =========================
-   CTAs
-   ========================= */
 .cta-primary {
     -fx-background-color: transparent;
     -fx-text-fill: #222;

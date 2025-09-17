@@ -18,15 +18,10 @@ import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
 
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.http.HttpResponse;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 public class AnalysisController {
@@ -39,7 +34,7 @@ public class AnalysisController {
     @FXML
     private TextFlow resultField;
 
-    private FileChooser fc = new FileChooser();
+    private final FileChooser fc = new FileChooser();
     private java.io.File file;
     private String sendingText;
     private String savingJson;
@@ -54,12 +49,21 @@ public class AnalysisController {
 
         if (file != null) {
             chosenFile.setText(file.getName());
+
             // Se vuoi visualizzare il percorso completo del file:
             // chosenFile.setText(file.getAbsolutePath());
         } else {
             // Opzionale: gestire il caso in cui l'utente annulla
             chosenFile.setText("Nessun file selezionato");
         }
+
+        resultField.getChildren().setAll(new Text("")); // reset stile caret
+        resultField.getChildren().clear();
+        analysisSaveBtn.setText("ANALIZZA");
+        analysisSaveBtn.setOnAction(handle -> handleAnalysis());
+        savingJson = "";
+        sendingText = "";
+
     }
 
     @FXML
@@ -97,13 +101,12 @@ public class AnalysisController {
                             String content2 = json.stringa();
                             System.out.println(content2);
 
-                            List<CheckListItem> answers = mapper.readValue(content2, new TypeReference<List<CheckListItem>>() { });
-                            return answers;
+                            return mapper.readValue(content2, new TypeReference<List<CheckListItem>>() { });
 
                         }
                     }catch(Exception e){
                         javafx.application.Platform.runLater(() -> {
-                            e.printStackTrace();
+                            //e.printStackTrace();
                             String content2 = "Errore inaspettato! Riprovare";
                             Alert alert = new Alert(Alert.AlertType.ERROR);
                             alert.setTitle("ERRORE");
@@ -127,7 +130,7 @@ public class AnalysisController {
 
                 }).exceptionally(ex -> {
                     javafx.application.Platform.runLater(() -> {
-                        ex.printStackTrace();
+                        //ex.printStackTrace();
                         String content2 = "Errore inaspettato! Riprovare";
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setTitle("ERRORE");
@@ -139,7 +142,7 @@ public class AnalysisController {
                 });
 
             } catch (Exception e) {
-                e.printStackTrace();
+                //e.printStackTrace();
                 content = "File non valido";
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("ERRORE");
@@ -151,6 +154,7 @@ public class AnalysisController {
     }
 
     private void setResult(List<CheckListItem> list) {
+        savingJson = "";
         resultField.getChildren().setAll(new Text("")); // reset stile caret
         resultField.getChildren().clear();
         resultField.getChildren().add(new Text("\n"));
@@ -160,9 +164,13 @@ public class AnalysisController {
                 Text t = new Text(line + "\n");
                 t.getStyleClass().add("flow-line");          // opzionale per CSS
                 resultField.getChildren().add(t);
+                savingJson += line + "\n";
             }
             resultField.getChildren().add(new Text("\n"));
+            savingJson += "\n";
         }
+
+
 
     }
 
@@ -176,7 +184,33 @@ public class AnalysisController {
     private void handleSaveResult() {
         Long id = JwtUtils.userIdFromJwt(Session.get().getAccessToken());
         SaveResultRequest req = new SaveResultRequest(sendingText, savingJson,id);
-        //CONTINUA DOMANI
+        Api api = new Api();
+        try{
+            HttpResponse<Void> r = api.save(req);
+            if(r.statusCode() == 200){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Informazione");
+                alert.setContentText("Risultato salvato con successo!");
+                alert.showAndWait();
+                resultField.getChildren().setAll(new Text("")); // reset stile caret
+                resultField.getChildren().clear();
+                analysisSaveBtn.setText("ANALIZZA");
+                analysisSaveBtn.setOnAction(handle -> handleAnalysis());
+                file = null;
+                chosenFile.setText("Nessun file selezionato");
+                savingJson = "";
+                sendingText = "";
+                Router.go("home");
+            }else{
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ERRORE");
+                alert.setContentText("Errore nel salvataggio del risultato");
+                alert.showAndWait();
+            }
+        } catch (Exception e) {
+            //
+        }
+
     }
 
 

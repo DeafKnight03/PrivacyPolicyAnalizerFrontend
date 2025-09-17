@@ -31,6 +31,13 @@ public class HomeController {
         Router.go("analysis");
 
     }
+
+    @FXML private void handlePolicies() {
+        System.out.println("Policies clicked");
+
+        Router.go("policies");
+
+    }
     @FXML
     private void handleTitleClick(MouseEvent e) {
         System.out.println("Page title clicked!");

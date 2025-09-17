@@ -23,9 +23,9 @@
     <center>
         <VBox alignment="CENTER" prefHeight="430.0" prefWidth="1006.0" spacing="20.0" styleClass="container">
          <children>
-             <ScrollPane fx:id="scroll" fitToWidth="true" hbarPolicy="AS_NEEDED" prefWidth="1099.0" vbarPolicy="AS_NEEDED" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1">
+             <ScrollPane styleClass="flowPane" fx:id="scroll" fitToWidth="true" hbarPolicy="NEVER" pannable="true" prefWidth="1099.0" vbarPolicy="NEVER" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1">
              <content>
-            <TextFlow fx:id="resultField" lineSpacing="2.0" textAlignment="CENTER">
+            <TextFlow styleClass="flowPane" fx:id="resultField" lineSpacing="2.0" textAlignment="CENTER">
                <VBox.margin>
                   <Insets left="200.0" right="200.0" />
                </VBox.margin>
@@ -34,8 +34,11 @@
                </cursor>
             </TextFlow>
              </content>
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </VBox.margin>
              </ScrollPane>
-            <Label fx:id="chosenFile" text="Nessun file scelto">
+            <Label fx:id="chosenFile" text="Nessun file selezionato">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin></Label>
@@ -46,7 +49,7 @@
                </VBox.margin></Button>
          </children>
          <BorderPane.margin>
-            <Insets />
+            <Insets left="20.0" right="20.0" />
          </BorderPane.margin>
         </VBox>
     </center>
@@ -63,13 +66,13 @@
       <StackPane prefHeight="127.0" prefWidth="1006.0" BorderPane.alignment="CENTER">
          <children>
             <Label alignment="CENTER" text="ANALIZZA" textAlignment="CENTER" StackPane.alignment="CENTER">
-               <font>
-                  <Font size="32.0" />
-               </font>
+                <font>
+                    <Font name="System Bold" size="32.0" />
+                </font>
             </Label>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="8.0" StackPane.alignment="CENTER_LEFT">
                <children>
-                  <Button mnemonicParsing="false" onAction="#handleBackHome" text="HOME">
+                  <Button mnemonicParsing="false" onAction="#handleBackHome" styleClass="button2" text="HOME">
                      <HBox.margin>
                         <Insets left="10.0" top="10.0" />
                      </HBox.margin>

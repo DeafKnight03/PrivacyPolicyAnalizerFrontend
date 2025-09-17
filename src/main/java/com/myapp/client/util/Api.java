@@ -1,7 +1,9 @@
 package com.myapp.client.util;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.myapp.client.dto.LoginRequest;
+import com.myapp.client.dto.SaveResultRequest;
 import com.myapp.client.dto.SignupRequest;
 import com.myapp.client.dto.StringDto;
 
@@ -35,9 +37,15 @@ public class Api {
     }
 
     // Example API call: GET /policies
-    public HttpResponse<String> getPolicies() throws Exception {
-        HttpRequest r = req("/policies").GET().build();
-        return client.send(r, HttpResponse.BodyHandlers.ofString());
+    public HttpResponse<String> getPolicies(StringDto request) throws Exception {
+
+        String s = MAPPER.writeValueAsString(request);
+        HttpRequest r = req("/api/policies/getPolicies")
+                .header("Content-Type", "application/json")
+                .header("Accept", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(s, StandardCharsets.UTF_8))
+                .build();
+        return client.send(r,HttpResponse.BodyHandlers.ofString());
     }
 
     public HttpResponse<String> login(LoginRequest request) throws Exception {
@@ -96,16 +104,25 @@ public class Api {
         }
     }
 
-    /** Decodifica exp dal payload JWT (seconds since epoch) */
-   /* private static Instant parseExpFromJwt(String jwt) {
-        try {
-            String[] parts = jwt.split("\\.");
-            String payload = new String(Base64.getUrlDecoder().decode(parts[1]), java.nio.charset.StandardCharsets.UTF_8);
-            long exp = MAPPER.readTree(payload).get("exp").asLong();
-            return Instant.ofEpochSecond(exp);
-        } catch (Exception e) {
-            // Se non riesci a leggere exp, costringi al fallback su 401
-            return null;
-        }
-    }*/
+    public HttpResponse<Void> save(SaveResultRequest request) throws Exception {
+        String s = MAPPER.writeValueAsString(request);
+        HttpRequest r = req("/api/policies/save")
+                .header("Content-Type", "application/json")
+                .header("Accept", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(s, StandardCharsets.UTF_8))
+                .build();
+        return client.send(r,HttpResponse.BodyHandlers.discarding());
+    }
+
+    public HttpResponse<String> count(StringDto request) throws Exception {
+        String s = MAPPER.writeValueAsString(request);
+        HttpRequest r = req("/api/policies/count")
+                .header("Content-Type", "application/json")
+                .header("Accept", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(s, StandardCharsets.UTF_8))
+                .build();
+        return client.send(r,HttpResponse.BodyHandlers.ofString());
+    }
+
+
 }

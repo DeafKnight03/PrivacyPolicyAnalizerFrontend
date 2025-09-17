@@ -1,0 +1,84 @@
+/* Palette (looked-up) */
+.background {
+
+    -color-card: #ffffff;
+    -color-text: #1f2937;
+    -color-muted: #6b7280;
+    -color-accent: #7c3aed; /* viola elegante */
+    -color-accent-weak: #ede9fe;
+    -color-border: #e5e7eb;
+
+    -fx-background-color: #e2e2d0;
+}
+
+
+
+/* Testi */
+/*.label {
+    -fx-text-fill: -color-text;
+    -fx-font-family: "Segoe UI", "Roboto", "Arial";
+}*/
+
+
+/* Bottoni */
+.button {
+    -fx-background-radius: 12;
+    -fx-padding: 10 16;
+    -fx-font-weight: 600;
+    -fx-cursor: hand;
+    -fx-background-color: #eeeee4;
+}
+
+.button:hover { -fx-background-color: rgba(0, 0, 0, 0.05); }
+
+
+
+
+/* Footer */
+.footer {
+    -fx-padding: 14 0 18 0;
+    -fx-border-color: transparent transparent -color-border transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.grid-pane {
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-border-radius: 4;
+}
+
+/* Make the bars invisible but keep scrolling behavior */
+.scroll-pane .scroll-bar {
+  -fx-opacity: 0;
+  -fx-padding: -10;   /* tucks them away so they don't capture stray clicks */
+}
+
+/* Optional: tidy backgrounds */
+.scroll-pane,
+.scroll-pane > .viewport {
+  -fx-background-color: transparent;
+}
+
+/* Hide the little corner where bars meet */
+.scroll-pane .corner {
+  -fx-background-color: transparent;
+}
+
+/* Classe per stilizzare il ScrollPane con un bordo curvo */
+.scroll-pane-curved {
+    /* Imposta un bordo nero solido di 2 pixel */
+    /*-fx-border-color: #333333;
+    -fx-border-width: 0px;*/
+
+    /* Applica un raggio ai bordi per renderli curvi */
+    -fx-border-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 22, 0.25, 0, 8);
+    -fx-background-color: #eeeee4;
+}
+
+.text-flow { -fx-background-color: #eeeee4;}
+
+.scroll-pane-curved > .viewport {
+    -fx-background-color: #eeeee4;
+    -fx-border-radius: 12;
+}

@@ -30,15 +30,15 @@ public final class Router {
         if (scene == null) throw new IllegalStateException("Router.init(scene) non chiamato");
 
         try {
-            Parent view = cache.computeIfAbsent(name, n -> {
-                try {
-                    return FXMLLoader.load(Router.class.getResource("/fxml/" + n + ".fxml"));
-                } catch (IOException e) {
-                    throw new RuntimeException("Impossibile caricare /fxml/" + n + ".fxml", e);
-                }
-            });
-
+            FXMLLoader loader = new FXMLLoader(Router.class.getResource("/fxml/" + name + ".fxml"));
+            Parent view = null;
+            try {
+                view = loader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
             scene.setRoot(view);
+
 
             // Applica CSS/layout e adatta la finestra alle pref del nuovo root
             view.applyCss();
@@ -63,18 +63,23 @@ public final class Router {
 
         switch (page) {
             case "home":
-                styles.removeIf(s -> s.endsWith("/css/homeLight.css") || s.endsWith("/css/homeDark.css") || s.endsWith("/css/analysisLight.css") || s.endsWith("/css/analysisDark.css") || s.endsWith("/css/loginDark.css"));
+                styles.removeIf(s -> s.endsWith("/css/homeLight.css") || s.endsWith("/css/homeDark.css") || s.endsWith("/css/analysisLight.css") || s.endsWith("/css/analysisDark.css") || s.endsWith("/css/policiesDark.css") || s.endsWith("/css/policiesLight.css"));
                 String chosen = dark ? "/css/homeDark.css" : "/css/homeLight.css";
                 styles.add(Router.class.getResource(chosen).toExternalForm());
                 break;
             case "login":
-                styles.removeIf(s -> s.endsWith("/css/homeLight.css") || s.endsWith("/css/homeDark.css") || s.endsWith("/css/analysisLight.css") || s.endsWith("/css/analysisDark.css") || s.endsWith("/css/loginDark.css"));
+                styles.removeIf(s -> s.endsWith("/css/homeLight.css") || s.endsWith("/css/homeDark.css") || s.endsWith("/css/analysisLight.css") || s.endsWith("/css/analysisDark.css") || s.endsWith("/css/loginDark.css") || s.endsWith("/css/policiesDark.css") || s.endsWith("/css/policiesLight.css"));
                 if(dark == true) styles.add(ControllerLogin.class.getResource("/css/loginDark.css").toExternalForm());
                 break;
             case "analysis":
-                styles.removeIf(s -> s.endsWith("/css/homeLight.css") || s.endsWith("/css/homeDark.css") || s.endsWith("/css/analysisLight.css") || s.endsWith("/css/analysisDark.css") || s.endsWith("/css/loginDark.css"));
+                styles.removeIf(s -> s.endsWith("/css/homeLight.css") || s.endsWith("/css/homeDark.css") || s.endsWith("/css/analysisLight.css") || s.endsWith("/css/analysisDark.css") || s.endsWith("/css/loginDark.css") || s.endsWith("/css/policiesDark.css") || s.endsWith("/css/policiesLight.css"));
                 String chosen2 = dark ? "/css/analysisDark.css" : "/css/analysisLight.css";
                 styles.add(Router.class.getResource(chosen2).toExternalForm());
+                break;
+            case "policies":
+                styles.removeIf(s -> s.endsWith("/css/homeLight.css") || s.endsWith("/css/homeDark.css") || s.endsWith("/css/analysisLight.css") || s.endsWith("/css/analysisDark.css") || s.endsWith("/css/loginDark.css") || s.endsWith("/css/policiesDark.css") || s.endsWith("/css/policiesLight.css"));
+                String chosen3 = dark ? "/css/policiesDark.css" : "/css/policiesLight.css";
+                styles.add(Router.class.getResource(chosen3).toExternalForm());
                 break;
             default:
                 break;

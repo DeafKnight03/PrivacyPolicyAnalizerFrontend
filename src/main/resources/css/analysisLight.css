@@ -1,6 +1,5 @@
 /* Palette (looked-up) */
 .background {
-    -color-bg: linear-gradient(to bottom, #f8fafc, #eef2f7);
     -color-card: #ffffff;
     -color-text: #1f2937;
     -color-muted: #6b7280;
@@ -8,23 +7,19 @@
     -color-accent-weak: #ede9fe;
     -color-border: #e5e7eb;
 
-    -fx-background-color: -color-bg;
+    -fx-background-color: #d8d8c0;
 }
 
 /* Card centrale */
 .container {
-    -fx-background-color: -color-card;
+    -fx-background-color: #eeeee4;
     -fx-background-radius: 18;
     -fx-padding: 28;
     -fx-spacing: 20;
     -fx-effect: dropshadow(gaussian, rgba(17,24,39,0.10), 16, 0.2, 0, 6);
 }
 
-/* Testi */
-.label {
-    -fx-text-fill: -color-text;
-    -fx-font-family: "Segoe UI", "Roboto", "Arial";
-}
+
 
 #chosenFile {
     -fx-text-fill: -color-muted;
@@ -37,31 +32,23 @@
     -fx-padding: 10 16;
     -fx-font-weight: 600;
     -fx-cursor: hand;
+    -fx-background-color: #d8d8c0;
 }
 
 .button:hover { -fx-background-color: rgba(0, 0, 0, 0.05); }
 
-/* Variante secondaria (se vuoi usarla via styleClass="secondary") */
-.button.secondary {
-    -fx-background-color: -color-accent-weak;
-    -fx-text-fill: -color-accent;
+.button2 {
+-fx-background-radius: 12;
+    -fx-padding: 10 16;
+    -fx-font-weight: 600;
+    -fx-cursor: hand;
+    -fx-background-color: #eeeee4;
 }
-.button.secondary:hover { -fx-background-color: #e2d9fd; }
 
-/* Progress bar */
-.progress-bar {
-    -fx-accent: -color-accent; /* colore della barra */
-    -fx-indeterminate-bar-length: 140;
-    -fx-indeterminate-bar-escape: true;
-    -fx-indeterminate-bar-flip: true;
-    -fx-background-radius: 12;
-}
-.progress-bar > .track {
-    -fx-background-color: -color-border;
-    -fx-background-radius: 12;
-}
-.progress-bar > .bar {
-    -fx-background-radius: 12;
+.button2:hover { -fx-background-color: rgba(0, 0, 0, 0.05); }
+
+.flowPane {
+    -fx-background-color: #d8d8c0;
 }
 
 /* Footer */
